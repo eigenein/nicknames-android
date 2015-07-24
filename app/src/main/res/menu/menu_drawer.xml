@@ -4,13 +4,9 @@
     <item android:title="@string/navigation_people">
         <menu>
             <item
-                android:title="@string/navigation_cyrillic_male"/>
+                android:title="@string/navigation_male"/>
             <item
-                android:title="@string/navigation_cyrillic_female"/>
-            <item
-                android:title="@string/navigation_latin_male"/>
-            <item
-                android:title="@string/navigation_latin_female"/>
+                android:title="@string/navigation_female"/>
         </menu>
     </item>
     <item android:title="@string/navigation_fantasy">
