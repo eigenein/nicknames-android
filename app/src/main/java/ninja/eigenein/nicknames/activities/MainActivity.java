@@ -20,6 +20,9 @@ import ninja.eigenein.nicknames.core.Model;
 
 public class MainActivity extends BaseActivity {
 
+    private static final String STATE_NICKNAME = "nickname";
+    private static final String STATE_LENGTH = "length";
+
     private static final int MIN_NICKNAME_LENGTH = 3;
     private static final HashMap<Integer, String> MENU_ITEM_SECTION_KEY = new HashMap<>();
 
@@ -66,7 +69,14 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        generate();
+        if ((savedInstanceState != null) && savedInstanceState.containsKey(STATE_LENGTH)) {
+            lengthSeekBar.setProgress(savedInstanceState.getInt(STATE_LENGTH));
+        }
+        if ((savedInstanceState != null) && savedInstanceState.containsKey(STATE_NICKNAME)) {
+            nicknameTextView.setText(savedInstanceState.getCharSequence(STATE_NICKNAME));
+        } else {
+            generate();
+        }
     }
 
     @Override
@@ -83,6 +93,12 @@ public class MainActivity extends BaseActivity {
             default:
                 return super.onOptionsItemSelected(menuItem);
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(final Bundle savedInstanceState) {
+        savedInstanceState.putInt(STATE_LENGTH, lengthSeekBar.getProgress());
+        savedInstanceState.putCharSequence(STATE_NICKNAME, nicknameTextView.getText());
     }
 
     private void setupTabLayout() {
