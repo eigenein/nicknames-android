@@ -59,6 +59,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(final View view) {
                 generate();
+                Application.sendEvent("Nicknames", "Generate", getModelKey());
             }
         });
 
@@ -80,6 +81,7 @@ public class MainActivity extends BaseActivity {
                 final ClipData clip = ClipData.newPlainText(getString(R.string.nickname), nicknameTextView.getText());
                 clipboardManager.setPrimaryClip(clip);
                 Toast.makeText(MainActivity.this, R.string.nickname_copied, Toast.LENGTH_SHORT).show();
+                Application.sendEvent("Nicknames", "Copy", getModelKey());
             }
         });
 
@@ -138,8 +140,15 @@ public class MainActivity extends BaseActivity {
         });
     }
 
+    /**
+     * Generates new nickname and updates UI.
+     */
     private void generate() {
-        final Model model = Application.getModel(sectionKey + "_" + characterSet);
+        final Model model = Application.getModel(getModelKey());
         nicknameTextView.setText(model.generate(lengthSeekBar.getProgress() + MIN_NICKNAME_LENGTH));
+    }
+
+    private String getModelKey() {
+        return sectionKey + "_" + characterSet;
     }
 }

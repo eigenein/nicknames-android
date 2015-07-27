@@ -2,6 +2,10 @@ package ninja.eigenein.nicknames;
 
 import android.util.Log;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,10 +23,12 @@ public class Application extends android.app.Application {
 
     private static final String LOG_TAG = Application.class.getSimpleName();
 
+    private static Tracker tracker;
     private static HashMap<String, Model> models = new HashMap<>();
 
     @Override
     public void onCreate() {
+        initializeTracker();
         try {
             readModels();
         } catch (final Exception e) {
@@ -30,8 +36,24 @@ public class Application extends android.app.Application {
         }
     }
 
+    public static void sendEvent(final String category, final String action, final String label) {
+        tracker.send(new HitBuilders.EventBuilder()
+                .setCategory(category)
+                .setAction(action)
+                .setLabel(label)
+                .build());
+    }
+
     public static Model getModel(final String key) {
         return models.get(key);
+    }
+
+    private void initializeTracker() {
+        final GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+        tracker = analytics.newTracker("UA-65034198-4");
+        tracker.enableExceptionReporting(true);
+        tracker.enableAdvertisingIdCollection(true);
+        tracker.enableAutoActivityTracking(true);
     }
 
     private void readModels() throws JSONException, IOException {
