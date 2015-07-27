@@ -16,40 +16,53 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- Toolbar and tab layout. -->
             <include layout="@layout/app_bar"/>
 
-            <FrameLayout
+            <!-- Content. -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:orientation="vertical">
 
+                <!-- Slider. -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="16dp"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
+                        android:layout_marginBottom="16dp"
                         android:text="@string/text_length"/>
-                    <SeekBar
-                        android:id="@+id/seek_length"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:max="15"
-                        android:progress="5"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_settings_grey600_24dp"
+                            android:contentDescription="@string/text_length"/>
+                        <SeekBar
+                            android:id="@+id/seek_length"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:max="15"
+                            android:progress="5"/>
+                    </LinearLayout>
                 </LinearLayout>
 
+                <!-- Nickname layout. -->
                 <LinearLayout
                     android:id="@+id/layout_clickable"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:clickable="true">
@@ -70,9 +83,10 @@
                         android:clickable="false"
                         android:text="@string/text_tap"/>
                 </LinearLayout>
-            </FrameLayout>
+            </LinearLayout>
         </LinearLayout>
 
+        <!-- FAB. -->
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
