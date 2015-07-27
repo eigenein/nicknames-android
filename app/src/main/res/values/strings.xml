@@ -7,4 +7,6 @@
     <string name="navigation_orcs">Latin orcs</string>
     <string name="navigation_male">Male names</string>
     <string name="navigation_female">Female names</string>
+    <string name="navigation_latin">Latin</string>
+    <string name="navigation_cyrillic">Cyrillic</string>
 </resources>
