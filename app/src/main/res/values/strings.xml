@@ -11,4 +11,6 @@
     <string name="navigation_cyrillic">Cyrillic</string>
     <string name="text_length">Nickname length</string>
     <string name="text_tap">Tap to get new a nickname</string>
+    <string name="nickname">Nickname</string>
+    <string name="nickname_copied">Nickname is copied to clipboard.</string>
 </resources>

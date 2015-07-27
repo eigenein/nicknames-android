@@ -1,5 +1,8 @@
 package ninja.eigenein.nicknames.activities;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -10,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -66,6 +70,16 @@ public class MainActivity extends BaseActivity {
                 drawerLayout.closeDrawers();
                 generate();
                 return true;
+            }
+        });
+
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                final ClipboardManager clipboardManager = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+                final ClipData clip = ClipData.newPlainText(getString(R.string.nickname), nicknameTextView.getText());
+                clipboardManager.setPrimaryClip(clip);
+                Toast.makeText(MainActivity.this, R.string.nickname_copied, Toast.LENGTH_SHORT).show();
             }
         });
 
