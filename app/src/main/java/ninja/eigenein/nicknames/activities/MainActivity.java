@@ -17,6 +17,7 @@ import ninja.eigenein.nicknames.core.Model;
 
 public class MainActivity extends BaseActivity {
 
+    private static final String DEFAULT_MODEL_KEY = "people_male_latin";
     private static final int MIN_NICKNAME_LENGTH = 3;
 
     private String sectionKey = "people_male";
@@ -34,7 +35,7 @@ public class MainActivity extends BaseActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
         setupTabLayout();
 
-        model = Application.getModel("people_male_latin");
+        model = Application.getModel(DEFAULT_MODEL_KEY);
 
         lengthSeekBar = (SeekBar)findViewById(R.id.seek_length);
         nicknameTextView = (TextView)findViewById(R.id.text_view_nickname);
