@@ -66,8 +66,8 @@ public class MainActivity extends BaseActivity {
 
     private void setupTabLayout() {
         final TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.navigation_latin));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.navigation_cyrillic));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.navigation_latin).setTag("latin"));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.navigation_cyrillic).setTag("cyrillic"));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(final TabLayout.Tab tab) {
