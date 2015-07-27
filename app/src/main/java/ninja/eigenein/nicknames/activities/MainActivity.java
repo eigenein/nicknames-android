@@ -6,14 +6,24 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
+import ninja.eigenein.nicknames.Application;
 import ninja.eigenein.nicknames.R;
+import ninja.eigenein.nicknames.core.Model;
 
 
 public class MainActivity extends BaseActivity {
 
-    private String modelName = "people_male";
-    private String characterSet = "latin";
+    private static final int MIN_NICKNAME_LENGTH = 3;
+
+    private String sectionKey = "people_male";
+    private Model model;
+
+    private SeekBar lengthSeekBar;
+    private TextView nicknameTextView;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -23,6 +33,19 @@ public class MainActivity extends BaseActivity {
         setupToolbar();
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
         setupTabLayout();
+
+        model = Application.getModel("people_male_latin");
+
+        lengthSeekBar = (SeekBar)findViewById(R.id.seek_length);
+        nicknameTextView = (TextView)findViewById(R.id.text_view_nickname);
+        findViewById(R.id.layout_clickable).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                generate();
+            }
+        });
+
+        generate();
     }
 
     @Override
@@ -48,7 +71,9 @@ public class MainActivity extends BaseActivity {
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(final TabLayout.Tab tab) {
-                // Do nothing.
+                final String characterSet = tab.getPosition() == 0 ? "_latin" : "_cyrillic"; // TODO
+                model = Application.getModel(sectionKey + characterSet);
+                generate();
             }
 
             @Override
@@ -61,5 +86,9 @@ public class MainActivity extends BaseActivity {
                 // Do nothing.
             }
         });
+    }
+
+    private void generate() {
+        nicknameTextView.setText(model.generate(lengthSeekBar.getProgress() + MIN_NICKNAME_LENGTH));
     }
 }

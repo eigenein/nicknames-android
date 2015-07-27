@@ -30,8 +30,8 @@ public class Application extends android.app.Application {
         }
     }
 
-    public HashMap<String, Model> getModels() {
-        return models;
+    public static Model getModel(final String key) {
+        return models.get(key);
     }
 
     private void readModels() throws JSONException, IOException {

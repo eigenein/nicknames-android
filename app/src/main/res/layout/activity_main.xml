@@ -37,11 +37,45 @@
 
             <TextView
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="@string/text_length"/>
+            <SeekBar
+                android:id="@+id/seek_length"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:max="15"
+                android:progress="5"/>
+            <LinearLayout
+                android:id="@+id/layout_clickable"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:gravity="center"
-                android:clickable="true"
-                android:text="nickname"
-                android:textAllCaps="true"/>
+                android:orientation="vertical"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/text_view_nickname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="32sp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:clickable="false"
+                    android:text="@string/text_tap"/>
+            </LinearLayout>
         </LinearLayout>
 
         <android.support.design.widget.FloatingActionButton
