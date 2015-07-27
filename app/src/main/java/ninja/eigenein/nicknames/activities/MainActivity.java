@@ -12,6 +12,9 @@ import ninja.eigenein.nicknames.R;
 
 public class MainActivity extends BaseActivity {
 
+    private String modelName = "people_male";
+    private String characterSet = "latin";
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
