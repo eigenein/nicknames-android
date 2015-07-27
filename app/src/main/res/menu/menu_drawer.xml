@@ -4,18 +4,23 @@
     <item android:title="@string/navigation_people">
         <menu>
             <item
+                android:id="@+id/navigation_male"
                 android:title="@string/navigation_male"/>
             <item
+                android:id="@+id/navigation_female"
                 android:title="@string/navigation_female"/>
         </menu>
     </item>
     <item android:title="@string/navigation_fantasy">
         <menu>
             <item
+                android:id="@+id/navigation_elves"
                 android:title="@string/navigation_elves"/>
             <item
+                android:id="@+id/navigation_dwarves"
                 android:title="@string/navigation_dwarves"/>
             <item
+                android:id="@+id/navigation_orcs"
                 android:title="@string/navigation_orcs"/>
         </menu>
     </item>
