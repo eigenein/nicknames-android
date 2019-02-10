@@ -1,16 +1,9 @@
 <resources>
-    <string name="app_name">Nicknames</string>
-    <string name="navigation_people">People</string>
-    <string name="navigation_fantasy">Fantasy</string>
-    <string name="navigation_elves">Elves</string>
-    <string name="navigation_dwarves">Dwarves</string>
-    <string name="navigation_orcs">Orcs</string>
-    <string name="navigation_male">Male names</string>
-    <string name="navigation_female">Female names</string>
-    <string name="navigation_latin">Latin</string>
-    <string name="navigation_cyrillic">Cyrillic</string>
-    <string name="text_length">Nickname length</string>
-    <string name="text_tap">Tap to get new a nickname</string>
-    <string name="nickname">Nickname</string>
-    <string name="nickname_copied">Nickname is copied to clipboard.</string>
+    <string name="app_name">Nickname Generator</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 </resources>
